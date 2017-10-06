@@ -1,0 +1,49 @@
+/**
+* Custom Slidedeck Styling.
+*
+* @author Vincent Ceulemans
+*
+*/
+@media screen {
+  .slide {
+    opacity: 0;
+    /*Transition*/
+    -webkit-transition-property:-webkit-transform opacity;
+    -webkit-transition-duration: 1s 0.5s;
+    -webkit-transition-timing-function: ease-in-out, linear;
+
+    -moz-transition-property:-moz-transform, opacity;
+    -moz-transition-duration: 1s,0.3s;
+    -moz-transition-timing-function: ease-out, linear;
+
+    -o-transition-property:-o-transform, opacity;
+    -o-transition-duration: 1s, 0.3s;
+    -o-transition-timing-function: ease-out, linear;
+
+    transition-property: transform, opacity;
+    transition-duration: 1s, 0.3s;
+    transition-timing-function: ease-in-out, linear;
+  }
+  .currentSlide,
+  .pastSlide,
+  .farPastSlide,
+  .futureSlide,
+  .farFutureSlide {
+    display: block;
+  }
+  .slide.currentSlide {
+    opacity: 1;
+  }
+
+  /*Positions*/
+  .farPastSlide,
+  .pastSlide,
+  .currentSlide,
+  .futureSlide,
+  .farFutureSlide{
+      -webkit-transform: translate3d(0,0,0);
+      -moz-transform: translate3d(0,0,0);
+      -o-transform: translate3d(0,0,0);
+      transform: translate3d(0,0,0);
+  }
+}

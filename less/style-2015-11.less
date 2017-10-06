@@ -1,0 +1,305 @@
+@media screen{
+    @slide-width: 1280px;
+    @slide-height: 720px;
+
+    .slide{
+        font-family: "OpenSans", "Arial", sans-serif;
+        color: #FFF;
+        background: #000;
+        padding: 30px;
+
+        a, p, li, figcaption{
+            font-size: 36px; /*font-size: 2.25em; /*36px*/
+        }
+
+        p, ul{
+            margin-top: 25px;
+        }
+
+        em{
+            font-weight: bold;
+            font-style: normal;
+        }
+
+        a{
+            color: #55F;
+        }
+
+        img{
+            display: block;
+        }
+
+        /* Lists
+        ---------------*/
+        ul{
+            list-style-type: disc;
+            list-style-position: outside;
+        }
+
+        li{
+            margin-top: 0.5em;
+            margin-left: 1em;
+        }
+
+        /* NEXT TIME Animation
+        ---------------*/
+        h1.nextTime{
+            font-size: 80px;
+            width: 100%;
+            font-weight: normal;
+            text-align: center;
+            font-family: "Contax", sans-serif;
+            -webkit-animation-name: glow;
+            -webkit-animation-duration: 6s;
+            -webkit-animation-timing-function: linear;
+            -webkit-animation-iteration-count: infinite;
+            -moz-animation-name: glow;
+            -moz-animation-duration: 6s;
+            -moz-animation-timing-function: linear;
+            -moz-animation-iteration-count: infinite;
+            animation-name: glow;
+            animation-duration: 6s;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+            margin-top: (@slide-height / 2px - 120px); /*120px = 2*padding ;*/
+
+            .firstLetter{
+                font-size: 100px;
+                color: inherit;
+            }
+        }
+
+        /**
+         * Glow Animation:
+         * Fade from hollow letters with Red-purple glow to full white letters with white glow.
+         */
+        @-webkit-keyframes glow{
+            0%{
+                color: #000;
+                text-shadow: 0 0 2px #7B002A;
+            }
+            25%{
+                text-shadow: 0 0 20px #BB40C0;
+            }
+            50%{
+                text-shadow: 0 0 2px #7B002A;
+            }
+            75%{
+                color: transparent;
+                text-shadow: 0 0 5px #EFEFEF,
+                            0 0 10px #EFEFEF;
+            }
+            100%{
+                color: #000;
+                text-shadow: 0 0 2px #7B002A;
+            }
+        }
+
+        @keyframes glow{
+            0%{
+                color: #000;
+                text-shadow: 0 0 2px #7E56A0;
+            }
+            25%{
+                text-shadow: 0 0 20px #BB40C0;
+            }
+            50%{
+                text-shadow: 0 0 2px #7E56A0;
+            }
+            75%{
+                color: transparent;
+                text-shadow: 0 0 5px #EFEFEF,
+                            0 0 10px #EFEFEF;
+            }
+            100%{
+                color: #000;
+                text-shadow: 0 0 2px #7E56A0;
+            }
+        }
+        /*End Glow Animation*/
+
+        h1, h2, h3, h4, h5{
+            font-weight: bold;
+            font-size: 50px; //5em
+            margin: 10px;
+        }
+
+        @datum-color: #FFFFA3; //Yellow
+
+        h2{
+            color: @datum-color;
+            font-size: 65px; //5em
+            margin-bottom: 0px;
+        }
+        
+        h2, h3{
+            margin-top: 0;
+            margin-bottom: 20px;
+            width: 100%;
+        }
+
+        h3{
+            font-size: 70px; //4.5em;
+        }
+
+        /* Info
+        ---------------*/
+        .info{
+            float: left;
+            width: 60%;
+            margin-top: 100px;
+
+            h2, h3, p{
+                text-align: left;
+                font-weight: bold;
+            }
+
+            p.tijd{
+                margin-left: 10px;
+            }
+        }
+
+        .image{
+            float: left;
+            width: 40%;
+            margin-top: 100px;
+            /*float: right;*/
+
+            img{
+                width: 100%;
+                height: auto;
+            }
+        }
+        
+        .outro{
+            display: grid;
+            grid-template-columns: 50% 50%;
+            margin-top: 6em;
+            margin-left: 2em;
+            margin-right: 2em;
+            
+            .details{
+                text-align: center; 
+                padding-top: 5em;    
+            }
+            
+            img.logo{
+                padding: 5px; 
+                margin: 10px auto; 
+                background: #FFF;
+            }
+        }
+        
+        .service-announcement{
+            margin-top: 100px;
+            
+            h2, p{
+                text-align: center;
+            }    
+        }
+
+
+
+        /* Type Indicator
+        ---------------*/
+        .activiteit-type{
+            position: absolute;
+            top: 0;
+            left: 40px;
+            padding: 5px 10px;
+            font-family: QuickSand, serif;
+
+            /*MIRA_Jeugdkern*/
+            &[data-type="MIRA_Jeugdkern"]
+            {
+                color: rgba(252, 139, 139, 0.58); /*Transparent Red*/
+
+                &:after{
+                    content:"[MIRA Jeugdkern]";
+                }
+            }
+
+            /*MIRA algemeen*/
+            &[data-type="MIRA"]{
+                color: rgba(186, 200, 255, 0.58); /*Transparent Blue*/
+
+                &:after{
+                    content:"[MIRA Overkoepelend]";
+                }
+            }
+
+            /*Extern*/
+            &[data-type="Extern"]{
+                color: rgba(186, 255, 208, 0.58); /*Transparent Green*/
+
+                &:after{
+                    content:"[Extern]";
+                }
+            }
+
+            /*Supernova*/
+            &[data-type="MIRA_Jeugdkern_Supernova"]{
+                color: rgba(206, 59, 255, 0.58); /*Transparent Purple*/
+
+                &:after{
+                    content:"[MIRA Jeugdkern][Supernova]";
+                }
+            }
+
+            &[data-type="Varia"]
+            {
+                color: rgba(186, 255, 208, 0.58); /*Transparent Green*/
+
+                &:after{
+                    content:"[Varia]";
+                }
+            }
+        }
+
+        /*Overzicht van verschillende activiteiten. */
+        &.overzicht{
+            .datum{
+                color: @datum-color;
+                font-weight: bold;
+                margin: 5px;
+            }
+
+            .list-wrapper{
+                text-align: center;
+
+                ul{
+                    list-style-type: none;
+                    list-style-position: outside;
+                    display: inline-block;
+                    margin: 0;
+                    padding: 0;
+
+                    li{
+                        text-align: left;
+
+                    }
+                }
+            }
+        }
+        
+        
+    }
+
+    /* Progress Bar
+    -------------------*/
+    .progressjs-inner{
+        height: 5px;
+        box-shadow: 0 0 0.10em 0.10em #29d;
+    }
+
+    .progressjs-progress{
+        top: auto !important;
+        bottom: 0px;
+    }
+
+    /* Slides
+    ---------------*/
+    .slideDeck{
+        background: #000 url(../images/slash_it.png) repeat;
+    }
+}
