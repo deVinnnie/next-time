@@ -43,12 +43,19 @@ module.exports = function(grunt) {
                     "css/main-2015-09.css": "less/main-2015-09.less"
                 }
             }
+        },
+        connect : {
+            uses_defaults: {}
         }
     });
 
     grunt.loadNpmTasks('grunt-contrib-pug');
     grunt.loadNpmTasks('grunt-contrib-less');
+    grunt.loadNpmTasks('grunt-contrib-connect');
 
     // Default task(s).
-    grunt.registerTask('default', 'pug');
+    grunt.registerTask('default', 'pug:index', 'pug:children');
+    
+    // Default task(s).
+    grunt.registerTask('serve', 'connect:uses_defaults:keepalive');
 };

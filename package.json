@@ -5,6 +5,7 @@
     "grunt": "^0.4.5",
     "grunt-contrib-less": "*",
     "grunt-contrib-pug": "^1.0.0",
+    "grunt-contrib-connect": "*",
     "express": "^4.15.4",
     "pug": "^2.0.0-rc.3"
   }
