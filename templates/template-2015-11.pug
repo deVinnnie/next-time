@@ -1,0 +1,42 @@
+doctype html
+html(lang="nl")
+    head
+        <title>Next Time</title>
+        <meta charset="UTF-8">
+        <meta name="author" content="Vincent Ceulemans">
+        <meta name="robots" content="NONE">
+        <meta name="googlebot" content="nosnippet,nofollow,noindex" />
+        <base target="_blank"/>
+
+        <link rel="stylesheet" type="text/css" href="/js/libs/progressjs.min.css"/>
+        <link rel="stylesheet" type="text/css" href="/css/presenter.css"/>
+        <link rel="stylesheet" type="text/css" href="/css/main-2015-11.css"/>
+        
+        <style id="style"></style>
+
+        <script type="text/javascript" src="/js/libs/progress.min.js"></script>
+        <script type="text/javascript" src="/js/libs/jquery-2.0.3.min.js"></script>
+        <script type="text/javascript" src="/js/libs/underscore-min.js"></script>
+        <script type="text/javascript" src="/js/libs/postal.min.js"></script>
+
+        <script type="text/javascript" src="/js/presenter.min.js"></script>
+        <script type="text/javascript" src="/js/main.js"></script>
+
+    body
+        #splash
+
+        .slideDeck
+            section
+                h1(class="nextTime",data-step-group="nextTime")
+                    <span class="firstLetter">N</span>EXT <span class="firstLetter">T</span>IME&hellip;
+            
+            block content
+            
+            section
+                .outro
+                    .thats-all
+                        img(src="../images/thats_all_folks.png", width="100%")
+                    
+                    .details
+                        img.logo(src="../images/Logo_zonder_tekst_in_kleur_transparant.gif",  width="100")
+                        a(href="http://www.mira.be") http://www.mira.be

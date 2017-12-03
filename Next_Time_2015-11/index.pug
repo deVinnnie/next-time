@@ -1,0 +1,34 @@
+extends ../templates/template-2015-11.pug
+block content
+    section
+        p.activiteit-type(data-type="MIRA")
+
+        .info
+            h2 Zondag 22 november
+            h3 Dag van de Wetenschap
+            p.tijd 10:00 - 18:00 (doorlopend)
+            
+        img(src="images/dag-van-de-wetenschap-splash.jpg", width="460px", class="center")
+
+    section
+        img(src="images/weerballon_kmi.jpg", class="center", height="100%")
+
+    section 
+        p.activiteit-type(data-type="MIRA_Jeugdkern")
+        
+        .info 
+            h2(style="text-decoration: line-through;") Zaterdag 28 november
+            h3(style="text-decoration: line-through;") Sterrenspecialist 2015
+
+    section
+        p.activiteit-type(data-type="MIRA_Jeugdkern")
+
+        .info
+            h2 Zaterdag 12 december
+            h3 Filmavond
+            p.tijd 19:30 - 22:00
+    
+    section.video
+        video
+            source(src="video/Apollo_13_Original_Theatrical_Trailer.mp4", type="video/mp4")
+            | Your browser does not support the video tag.               
