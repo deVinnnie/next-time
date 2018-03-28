@@ -1,6 +1,8 @@
 language: node_js
 script:
-    - npm run build
+  - npm run build    
+before_deploy:
+  - head -n 1 .gitignore > .gitignore
 deploy:
   provider: pages
   skip-cleanup: true
