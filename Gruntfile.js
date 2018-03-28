@@ -55,8 +55,8 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-connect');
 
     // Default task(s).
-    grunt.registerTask('default', 'pug:index', 'pug:children');
+    grunt.registerTask('default', ['pug:index', 'pug:children', 'less']);
     
     // Default task(s).
-    grunt.registerTask('serve', 'connect:uses_defaults:keepalive');
+    grunt.registerTask('serve', ['connect:uses_defaults:keepalive']);
 };
