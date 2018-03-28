@@ -40,7 +40,8 @@ module.exports = function(grunt) {
             all:{
                 files: {
                     "css/main-2015-11.css": "less/main-2015-11.less",
-                    "css/main-2015-09.css": "less/main-2015-09.less"
+                    "css/main-2015-09.css": "less/main-2015-09.less",
+                    "css/main-2018-04.css": "less/main-2018-04.less"
                 }
             }
         },
