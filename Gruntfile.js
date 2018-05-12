@@ -1,12 +1,5 @@
 module.exports = function(grunt) {
     
-    var generatedFiles = grunt.file.expand({filter: "isFile"},
-                                  [ "**/*.html", 
-                                    "!index.html", 
-                                    "!node_modules/**"
-                                  ]
-    );
-
     // Project configuration.
     grunt.initConfig({
         pug: {
@@ -27,7 +20,13 @@ module.exports = function(grunt) {
                 options: {
                     data: {
                         debug: false,
-                        files: generatedFiles
+                        files: grunt.file.expand(
+                          {filter: "isFile"},
+                          [ "**/*.html", 
+                            "!index.html", 
+                            "!node_modules/**"
+                          ]
+                        )
                     }
                 },
                 files: {
@@ -55,7 +54,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-connect');
 
     // Default task(s).
-    grunt.registerTask('default', ['pug:index', 'pug:children', 'less']);
+    grunt.registerTask('default', ['pug:children', 'less']);
     
     // Default task(s).
     grunt.registerTask('serve', ['connect:uses_defaults:keepalive']);

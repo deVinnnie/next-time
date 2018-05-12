@@ -11,6 +11,6 @@
     "pug": "^2.0.0-rc.3"
   },
   "scripts": {
-    "build": "grunt"
+    "build": "grunt && grunt pug:index"
   }
 }
