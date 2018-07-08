@@ -2,13 +2,12 @@
   "name": "MIRA_Jeugdkern_Next_Time",
   "version": "0.1.0",
   "devDependencies": {
-    "grunt": "^0.4.5",
+    "grunt": "^1.0.3",
     "grunt-cli": "1.2.0",
-    "grunt-contrib-less": "*",
+    "grunt-contrib-less": "1.4.1",
     "grunt-contrib-pug": "^1.0.0",
     "grunt-contrib-connect": "*",
-    "express": "^4.15.4",
-    "pug": "^2.0.0-rc.3"
+    "pug": "^2.0.3"
   },
   "scripts": {
     "build": "grunt && grunt pug:index"
