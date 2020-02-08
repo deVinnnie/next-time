@@ -1,0 +1,14 @@
+doctype html
+html(lang="nl")
+    head
+        <title>Index</title>
+        <meta charset="UTF-8">
+        <meta name="author" content="Vincent Ceulemans">
+        <meta name="robots" content="NONE">
+        <meta name="googlebot" content="nosnippet,nofollow,noindex" />
+    body
+        h1 Index
+        ul
+            for file in files
+                li
+                    a(href=file)= file
