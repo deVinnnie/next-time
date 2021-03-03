@@ -7,7 +7,7 @@
     "grunt-contrib-less": "1.4.1",
     "grunt-contrib-pug": "^1.0.0",
     "grunt-contrib-connect": "*",
-    "pug": "^2.0.3"
+    "pug": "^3.0.1"
   },
   "scripts": {
     "build": "grunt && grunt pug:index"
