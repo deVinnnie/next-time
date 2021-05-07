@@ -2,7 +2,7 @@
   "name": "MIRA_Jeugdkern_Next_Time",
   "version": "0.1.0",
   "devDependencies": {
-    "grunt": "^1.0.3",
+    "grunt": "^1.3.0",
     "grunt-cli": "1.2.0",
     "grunt-contrib-less": "1.4.1",
     "grunt-contrib-pug": "^1.0.0",
