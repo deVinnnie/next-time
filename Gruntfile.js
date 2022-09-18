@@ -35,27 +35,17 @@ module.exports = function(grunt) {
             }
         },
 
-        less: {
-            all:{
-                files: {
-                    "css/main-2015-11.css": "less/main-2015-11.less",
-                    "css/main-2015-09.css": "less/main-2015-09.less",
-                    "css/main-2018-04.css": "less/main-2018-04.less"
-                }
-            }
-        },
         connect : {
             uses_defaults: {}
         }
     });
 
     grunt.loadNpmTasks('grunt-contrib-pug');
-    grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-contrib-connect');
 
     // Default task(s).
-    grunt.registerTask('default', ['pug:children', 'less']);
-    
+    grunt.registerTask('default', ['pug:children']);
+
     // Default task(s).
     grunt.registerTask('serve', ['connect:uses_defaults:keepalive']);
 };

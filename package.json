@@ -4,12 +4,16 @@
   "devDependencies": {
     "grunt": "^1.0.3",
     "grunt-cli": "1.2.0",
-    "grunt-contrib-less": "1.4.1",
     "grunt-contrib-pug": "^1.0.0",
     "grunt-contrib-connect": "*",
-    "pug": "^2.0.3"
+    "pug": "^2.0.4",
+    "less": "4.1.3"
   },
   "scripts": {
-    "build": "grunt && grunt pug:index"
+    "build": "grunt && grunt pug:index && npm run less",
+    "less": "npm run less:main-2015-11 && npm run less:main-2015-09 && npm run less:main-2018-04",
+    "less:main-2015-11": "lessc less/main-2015-11.less css/main-2015-11.css",
+    "less:main-2015-09": "lessc less/main-2015-09.less css/main-2015-09.css",
+    "less:main-2018-04": "lessc less/main-2018-04.less css/main-2018-04.css"
   }
 }
