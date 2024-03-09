@@ -1,0 +1,767 @@
+/**
+* Generic Slidedeck Styling. 
+*
+* @author Vincent Ceulemans
+*
+*    <div class="slideDeck">
+*       <section class="slide">
+*           ...
+*           <ul>
+*               <li class="step">Stap 1</li>
+*               <li class="step">Stap 2</li>
+*               <li class="step">Stap 3</li>
+*           </ul>
+*          ...
+*                
+*           <div class="notes">
+*           </div>
+*       </section>
+*        ...
+*   </div>
+*
+*/
+/**
+* Generic Slide Styling
+*
+* @author Vincent Ceulemans
+*
+* <section class="slide">
+*       ....
+* </section>
+* 
+*/
+@media screen {
+  .slide {
+    width: 1280px;
+    height: 720px;
+    display: none;
+    position: absolute;
+    overflow: hidden;
+    margin: 0 auto;
+    -webkit-transform-origin: 0 0;
+    -moz-transform-origin: 0 0;
+    -ms-transform-origin: 0 0;
+    -o-transform-origin: 0 0;
+    transform-origin: 0 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    background-clip: padding-box;
+    background-repeat: no-repeat;
+  }
+  .slide.transparent {
+    background: transparent;
+  }
+  /*Display videos or images in the center of the slide and make the background black.*/
+  .slide.video,
+  .slide.image,
+  .slide.center,
+  .slide.blank {
+    background: #000;
+    padding: 0;
+  }
+  .slide.video video {
+    display: block;
+    height: 100%;
+    margin: 0 auto;
+  }
+  .slide.image img {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  .currentSlide,
+  .pastSlide,
+  .farPastSlide,
+  .futureSlide,
+  .farFutureSlide {
+    display: block;
+  }
+}
+@media print {
+  .slide {
+    border: 0.2em solid black;
+    background: none;
+    min-height: 100vh;
+  }
+  img {
+    max-width: 100%;
+  }
+}
+/**
+* Styling for ticker. 
+*
+* @author Vincent Ceulemans
+*
+* <div id="ticker">
+*     <ul id="ticks">
+*         <li><span class="tick"></span></li>
+*         <li><span class="tick"></span></li>
+*         <li><span class="tick"></span></li>
+*     </ul>
+* </div>
+*
+*/
+@media screen {
+  #ticker {
+    position: fixed;
+    display: block;
+    bottom: 10px;
+    z-index: 100;
+  }
+  #ticker ul {
+    list-style: none;
+  }
+  #ticker.left {
+    right: auto;
+    left: 0;
+  }
+  #ticker.right {
+    left: auto;
+    right: 50px;
+  }
+  #ticker .tick {
+    display: block;
+    background: #A70B37;
+    height: 10px;
+    width: 10px;
+  }
+  #ticker.large .tick {
+    width: 40px;
+    height: 40px;
+  }
+}
+/**
+* Curtain: conceals the slide contents. 
+*
+* @author Vincent Ceulemans
+*
+* Curtain open: 
+* <div id="curtain"></div>
+*
+* Curtain closed: 
+* <div id="curtain" class="closed"></div>
+*/
+@media screen {
+  #curtain {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    -webkit-transition: opacity 0.5s linear;
+    -moz-transition: opacity 0.5s linear;
+    -o-transition: opacity 0.5s linear;
+    transition: opacity 0.5s linear;
+    z-index: -10;
+    opacity: 0;
+  }
+  #curtain.closed {
+    z-index: 20;
+    opacity: 1;
+  }
+}
+/**
+* Presentation Notes styling
+*
+* @author Vincent Ceulemans
+*
+*
+* <section class="slide">
+*       <div class="notes">
+* </section>
+*
+* <div id="notes-display">
+*
+* </div>
+*
+*/
+@media screen {
+  .notes {
+    display: none;
+  }
+  #notes-display {
+    color: #FFF;
+    font-size: 75%;
+    position: fixed;
+    bottom: -55%;
+    height: 55%;
+    width: 98%;
+    background-color: #000;
+    background-color: rgba(0, 0, 0, 0.7);
+    -webkit-transition: bottom 0.3s ease-in;
+    -moz-transition: bottom 0.3s ease-in;
+    -o-transition: bottom 0.3s ease-in;
+    transition: bottom 0.3s ease-in;
+    padding: 0 1em;
+    overflow-y: scroll;
+    cursor: auto;
+  }
+  #notes-display ul {
+    margin-left: 0;
+    padding-left: 0;
+  }
+  #notes-display.visible {
+    bottom: 0;
+  }
+}
+@media print {
+  .notes {
+    color: #757575;
+  }
+  #notes-display {
+    display: none;
+  }
+}
+/**
+* Overview mode with thumbnails of each slide
+*
+* @author Vincent Ceulemans
+*
+*/
+@media screen {
+  .slideDeck.overview {
+    padding: 1em;
+  }
+  .slideDeck.overview .slide-wrapper {
+    float: left;
+    margin-left: 10px;
+    margin-top: 20px;
+    display: block;
+  }
+  .slideDeck.overview .slide-wrapper .slide {
+    position: relative;
+    display: block;
+    opacity: 1;
+    left: 0;
+    top: 0;
+    border: 1.5em solid transparent;
+    border-radius: 15px;
+  }
+  .slideDeck.overview .slide-wrapper .slide:hover {
+    border-color: #EFEFEF;
+    box-shadow: 0 0 100px #FFF;
+  }
+  .slideDeck.overview .slide-wrapper .slide:after {
+    counter-increment: slideCounter;
+    content: counter(slideCounter);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 0.2em;
+    background-color: rgba(0, 0, 0, 0.2);
+    /*Set text*/
+    font-size: 10em;
+    font-family: "Arial";
+    color: #FFF;
+    text-shadow: 0 5px 5px #FFF;
+  }
+  .slideDeck.overview .slide-wrapper.current .slide {
+    border-color: #00FF00;
+    box-shadow: 0 0 100px #0F0;
+  }
+  .slideDeck.overview ~ #ticker {
+    display: none;
+  }
+}
+/**
+* Styling for master mode. 
+*
+* @author Vincent Ceulemans
+*
+*/
+@media screen {
+  .master {
+    /* Always show the notes-display.*/
+    /*Place currrentSlide on the lefthand side of the viewscreen*/
+    /*Place next Slide on the righthand side of the viewscreen); */
+    /* Make upcoming steps translucent instead of hidden. */
+  }
+  .master #notes-display {
+    bottom: 0;
+    height: 50%;
+  }
+  .master .pastSlide,
+  .master .farPastSlide,
+  .master .farFutureSlide {
+    display: none;
+  }
+  .master .currentSlide,
+  .master .futureSlide {
+    display: block;
+  }
+  .master .currentSlide {
+    border: 3px solid #51A9EE;
+    box-shadow: 0 0 30px #51A9EE;
+    -webkit-transform: scale(0.5) translate3d(0, 0, 0);
+    transform: scale(0.5) translate3d(0, 0, 0);
+    opacity: 1;
+    transition: none;
+    -webkit-transition: none;
+    left: 30px;
+  }
+  .master .futureSlide {
+    -webkit-transform: scale(0.5) translate3d(1300px, 0, 0);
+    transform: scale(0.5) translate3d(1300px, 0, 0);
+    opacity: 1;
+    transition: none;
+    -webkit-transition: none;
+    left: 0;
+    right: 30px;
+  }
+  .master .step {
+    opacity: 0.5;
+    color: #EEE;
+  }
+}
+@media screen {
+  /* General
+    ---------------*/
+  html,
+  body {
+    height: 100%;
+    padding: 0;
+    margin: 0;
+  }
+  html {
+    overflow: hidden;
+  }
+  body {
+    cursor: none;
+    font-size: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    counter-reset: slideCounter;
+  }
+  .cursor-visible {
+    cursor: auto;
+  }
+  .slideDeck {
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+  }
+  /* Transitioning between steps.  
+    ---------------*/
+  .step {
+    opacity: 0;
+  }
+  .step,
+  .step-done {
+    -webkit-transition: opacity 0.5s linear;
+    -moz-transition: opacity 0.5s linear;
+    -o-transition: opacity 0.5s linear;
+    transition: opacity 0.5s linear;
+  }
+  /* Splashscreen
+    ---------------*/
+  #splash {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    line-height: 500px;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    background: #000;
+    color: #FFF;
+    font-size: 40px;
+    text-align: center;
+  }
+  /* Helpscreen
+    ---------------*/
+  #help {
+    position: fixed;
+    width: 100%;
+    top: 50px;
+    z-index: 99;
+    background: rgba(0, 0, 0, 0.5);
+    color: #FFF;
+    text-align: center;
+    padding: 10px;
+  }
+}
+@media print {
+  * {
+    color: #000;
+  }
+  .slide {
+    /*width: 90%;
+        height: 90%;*/
+  }
+}
+/* Center an element horizontally. 
+---------------*/
+.center {
+  display: block;
+  margin: 0 auto;
+}
+p.center {
+  text-align: center;
+}
+/* Move element to middle on vertical axis. 
+---------------*/
+.vertical-middle {
+  margin-top: 250px;
+  /*Good enough*/
+}
+.float_left {
+  float: left;
+}
+.float_right {
+  float: right;
+}
+.clearfix {
+  clear: both;
+}
+/**
+* Custom Slidedeck Styling.
+*
+* @author Vincent Ceulemans
+*
+*/
+@media screen {
+  .slide {
+    opacity: 0;
+    /*Transition*/
+    -webkit-transition-property: -webkit-transform opacity;
+    -webkit-transition-duration: 1s 0.5s;
+    -webkit-transition-timing-function: ease-in-out, linear;
+    -moz-transition-property: -moz-transform, opacity;
+    -moz-transition-duration: 1s, 0.3s;
+    -moz-transition-timing-function: ease-out, linear;
+    -o-transition-property: -o-transform, opacity;
+    -o-transition-duration: 1s, 0.3s;
+    -o-transition-timing-function: ease-out, linear;
+    transition-property: transform, opacity;
+    transition-duration: 1s, 0.3s;
+    transition-timing-function: ease-in-out, linear;
+  }
+  .currentSlide,
+  .pastSlide,
+  .farPastSlide,
+  .futureSlide,
+  .farFutureSlide {
+    display: block;
+  }
+  .slide.currentSlide {
+    opacity: 1;
+  }
+  /*Positions*/
+  .farPastSlide,
+  .pastSlide,
+  .currentSlide,
+  .futureSlide,
+  .farFutureSlide {
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    -o-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+@media screen {
+  .slide {
+    font-family: "OpenSans", "Arial", sans-serif;
+    color: #FFF;
+    background: #000;
+    padding: 30px;
+    /* Lists
+        ---------------*/
+    /* NEXT TIME Animation
+        ---------------*/
+    /**
+         * Glow Animation:
+         * Fade from hollow letters with Red-purple glow to full white letters with white glow.
+         */
+    /*End Glow Animation*/
+    /* Info
+        ---------------*/
+    /* Type Indicator
+        ---------------*/
+    /*Overzicht van verschillende activiteiten. */
+  }
+  .slide a,
+  .slide p,
+  .slide li,
+  .slide figcaption {
+    font-size: 36px;
+    /*font-size: 2.25em; /*36px*/
+  }
+  .slide p,
+  .slide ul {
+    margin-top: 25px;
+  }
+  .slide em {
+    font-weight: bold;
+    font-style: normal;
+  }
+  .slide a {
+    color: #55F;
+  }
+  .slide img {
+    display: block;
+  }
+  .slide ul {
+    list-style-type: disc;
+    list-style-position: outside;
+  }
+  .slide li {
+    margin-top: 0.5em;
+    margin-left: 1em;
+  }
+  .slide h1.nextTime {
+    font-size: 80px;
+    width: 100%;
+    font-weight: normal;
+    text-align: center;
+    font-family: "Contax", sans-serif;
+    -webkit-animation-name: glow;
+    -webkit-animation-duration: 6s;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-iteration-count: infinite;
+    -moz-animation-name: glow;
+    -moz-animation-duration: 6s;
+    -moz-animation-timing-function: linear;
+    -moz-animation-iteration-count: infinite;
+    animation-name: glow;
+    animation-duration: 6s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    margin-top: 240px;
+    /*120px = 2*padding ;*/
+  }
+  .slide h1.nextTime .firstLetter {
+    font-size: 100px;
+    color: inherit;
+  }
+  @-webkit-keyframes glow {
+    0% {
+      color: #000;
+      text-shadow: 0 0 2px #7B002A;
+    }
+    25% {
+      text-shadow: 0 0 20px #BB40C0;
+    }
+    50% {
+      text-shadow: 0 0 2px #7B002A;
+    }
+    75% {
+      color: transparent;
+      text-shadow: 0 0 5px #EFEFEF, 0 0 10px #EFEFEF;
+    }
+    100% {
+      color: #000;
+      text-shadow: 0 0 2px #7B002A;
+    }
+  }
+  @keyframes glow {
+    0% {
+      color: #000;
+      text-shadow: 0 0 2px #7E56A0;
+    }
+    25% {
+      text-shadow: 0 0 20px #BB40C0;
+    }
+    50% {
+      text-shadow: 0 0 2px #7E56A0;
+    }
+    75% {
+      color: transparent;
+      text-shadow: 0 0 5px #EFEFEF, 0 0 10px #EFEFEF;
+    }
+    100% {
+      color: #000;
+      text-shadow: 0 0 2px #7E56A0;
+    }
+  }
+  .slide h1,
+  .slide h2,
+  .slide h3,
+  .slide h4,
+  .slide h5 {
+    font-weight: bold;
+    font-size: 50px;
+    margin: 10px;
+  }
+  .slide h2 {
+    color: #FFFFA3;
+    font-size: 65px;
+    margin-bottom: 0px;
+  }
+  .slide h2,
+  .slide h3 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    width: 100%;
+  }
+  .slide h3 {
+    font-size: 70px;
+  }
+  .slide .info {
+    float: left;
+    width: 60%;
+    margin-top: 100px;
+  }
+  .slide .info h2,
+  .slide .info h3,
+  .slide .info p {
+    text-align: left;
+    font-weight: bold;
+  }
+  .slide .info p.tijd {
+    margin-left: 10px;
+  }
+  .slide .image {
+    float: left;
+    width: 40%;
+    margin-top: 100px;
+    /*float: right;*/
+  }
+  .slide .image img {
+    width: 100%;
+    height: auto;
+  }
+  .slide .outro {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    margin-top: 6em;
+    margin-left: 2em;
+    margin-right: 2em;
+  }
+  .slide .outro .details {
+    text-align: center;
+    padding-top: 0.5em;
+  }
+  .slide .outro .details #qrcode img {
+    width: 192px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0.5em;
+    padding: 5px;
+    background-color: #FFF;
+  }
+  .slide .outro img.logo {
+    padding: 5px;
+    margin: 10px auto;
+    background: #FFF;
+  }
+  .slide .service-announcement {
+    margin-top: 100px;
+  }
+  .slide .service-announcement h2,
+  .slide .service-announcement p {
+    text-align: center;
+  }
+  .slide .activiteit-type {
+    position: absolute;
+    top: 0;
+    left: 40px;
+    padding: 5px 10px;
+    font-family: QuickSand, serif;
+    /*MIRA_Jeugdkern*/
+    /*MIRA algemeen*/
+    /*Extern*/
+    /*Supernova*/
+  }
+  .slide .activiteit-type[data-type="MIRA_Jeugdkern"] {
+    color: rgba(252, 139, 139, 0.58);
+    /*Transparent Red*/
+  }
+  .slide .activiteit-type[data-type="MIRA_Jeugdkern"]:after {
+    content: "[MIRA Jeugdkern]";
+  }
+  .slide .activiteit-type[data-type="MIRA"] {
+    color: rgba(186, 200, 255, 0.58);
+    /*Transparent Blue*/
+  }
+  .slide .activiteit-type[data-type="MIRA"]:after {
+    content: "[MIRA Overkoepelend]";
+  }
+  .slide .activiteit-type[data-type="Extern"] {
+    color: rgba(186, 255, 208, 0.58);
+    /*Transparent Green*/
+  }
+  .slide .activiteit-type[data-type="Extern"]:after {
+    content: "[Extern]";
+  }
+  .slide .activiteit-type[data-type="MIRA_Jeugdkern_Supernova"] {
+    color: rgba(206, 59, 255, 0.58);
+    /*Transparent Purple*/
+  }
+  .slide .activiteit-type[data-type="MIRA_Jeugdkern_Supernova"]:after {
+    content: "[MIRA Jeugdkern][Supernova]";
+  }
+  .slide .activiteit-type[data-type="Varia"] {
+    color: rgba(186, 255, 208, 0.58);
+    /*Transparent Green*/
+  }
+  .slide .activiteit-type[data-type="Varia"]:after {
+    content: "[Varia]";
+  }
+  .slide.overzicht .datum {
+    color: #FFFFA3;
+    font-weight: bold;
+    margin: 5px;
+  }
+  .slide.overzicht .list-wrapper {
+    text-align: center;
+  }
+  .slide.overzicht .list-wrapper ul {
+    list-style-type: none;
+    list-style-position: outside;
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+  }
+  .slide.overzicht .list-wrapper ul li {
+    text-align: left;
+  }
+  .slide .license,
+  .slide .license a {
+    font-size: 15px;
+    font-style: italic;
+  }
+  /* Progress Bar
+    -------------------*/
+  .progressjs-inner {
+    height: 5px;
+    box-shadow: 0 0 0.1em 0.1em #29d;
+  }
+  .progressjs-progress {
+    top: auto !important;
+    bottom: 0px;
+  }
+  /* Slides
+    ---------------*/
+  .slideDeck {
+    background: #000 url(../images/slash_it.png) repeat;
+  }
+}
+/*Extra fonts
+---------------*/
+@font-face {
+  font-family: "OpenSans";
+  font-style: italic, oblique;
+  src: url(../fonts/OpenSans/OpenSans-Italic.ttf);
+}
+@font-face {
+  font-family: "OpenSans";
+  src: url(../fonts/OpenSans/OpenSans-Regular.ttf);
+}
+@font-face {
+  font-family: "OpenSans";
+  font-weight: bold;
+  src: url(../fonts/OpenSans/OpenSans-Bold.ttf);
+}
+@font-face {
+  /*Doctor Who Series 7 Title Card Font.*/
+  font-family: "Contax";
+  src: url(../fonts/Contax/Contax.ttf);
+}
+@font-face {
+  font-family: "Quicksand";
+  src: url(../fonts/Quicksand/Quicksand_Book.otf);
+}
